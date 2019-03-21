@@ -1,3 +1,0 @@
-C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/libsparkle.so.dir
-C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
-C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir
