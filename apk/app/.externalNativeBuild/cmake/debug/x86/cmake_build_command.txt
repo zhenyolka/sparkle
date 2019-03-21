@@ -1,0 +1,15 @@
+Executable : C:\android_sdk\cmake\3.6.4111459\bin\cmake.exe
+arguments : 
+-HC:\AndroidProjects\sparkle\apk\app\src\main\cpp
+-BC:\AndroidProjects\sparkle\apk\app\.externalNativeBuild\cmake\debug\x86
+-DANDROID_ABI=x86
+-DANDROID_PLATFORM=android-19
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\AndroidProjects\sparkle\apk\app\build\intermediates\cmake\debug\obj\x86
+-DCMAKE_BUILD_TYPE=Debug
+-DANDROID_NDK=C:\android_sdk\ndk-bundle
+-DCMAKE_CXX_FLAGS=-fexceptions
+-DCMAKE_TOOLCHAIN_FILE=C:\android_sdk\ndk-bundle\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=C:\android_sdk\cmake\3.6.4111459\bin\ninja.exe
+-GAndroid Gradle - Ninja
+jvmArgs : 
+

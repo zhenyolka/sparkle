@@ -67,17 +67,4 @@ void WereTimer::start(int interval, bool singleShot)
         throw WereException("[%p][%s] Failed to start timer.", this, __PRETTY_FUNCTION__);
 }
 
-void WereTimer::stop()
-{
-    struct itimerspec new_value;
-
-    new_value.it_value.tv_sec = 0;
-    new_value.it_value.tv_nsec = 0;
-    new_value.it_interval.tv_sec = 0;
-    new_value.it_interval.tv_nsec = 0;
-
-    if (timerfd_settime(_fd, 0, &new_value, NULL) == -1)
-        throw WereException("[%p][%s] Failed to stop timer.", this, __PRETTY_FUNCTION__);
-}
-
 /* ================================================================================================================== */

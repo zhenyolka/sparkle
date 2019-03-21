@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "C:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "C:\\android_sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\AndroidProjects\\sparkle\\apk\\app\\.externalNativeBuild\\cmake\\release\\x86_64 --target clean"
+  ],
+  "libraries": {
+    "libsparkle.so-Release-x86_64": {
+      "artifactName": "libsparkle.so",
+      "buildCommand": "C:\\android_sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\AndroidProjects\\sparkle\\apk\\app\\.externalNativeBuild\\cmake\\release\\x86_64 --target libsparkle.so",
+      "abi": "x86_64",
+      "output": "C:\\AndroidProjects\\sparkle\\apk\\app\\.externalNativeBuild\\cmake\\release\\x86_64\\libsparkle.so"
+    }
+  }
+}

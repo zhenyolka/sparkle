@@ -8,18 +8,25 @@
 
 #define SOUND_THREAD
 
-void android_main(struct android_app *app)
+int main(int argc, char **argv)
 {
+    std::string internalDataPath;
+
+    if(argc == 1){
+        were_message("No arguments given.\n");
+        return 1;
+    } else {
+        internalDataPath = argv[1];
+    }
+
     were_message("android_main started.\n");
 
     umask(0);
 
-    std::string internalDataPath(app->activity->internalDataPath);
-
     try
     {
         WereEventLoop *loop = new WereEventLoop();
-        Platform *platform = platform_na_create(loop, app);
+        Platform *platform = platform_na_create(loop);
         Compositor *compositor = compositor_gl_create(loop, platform, internalDataPath + "/sparkle.socket");
 
 #ifdef SOUND_THREAD
@@ -52,8 +59,7 @@ void android_main(struct android_app *app)
         were_error("%s\n", e.what());
     }
 
-    ANativeActivity_finish(app->activity);
-
     were_message("android_main finished.\n");
+    return 0;
 }
 

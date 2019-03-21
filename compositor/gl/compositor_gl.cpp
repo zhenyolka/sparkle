@@ -9,7 +9,8 @@
 #include <thread>
 #include <map>
 #include <string>
-#include <algorithm>
+#include <unistd.h>
+#include <shm/shm.h>
 
 #include "common/utility.h"
 #include "common/sparkle_surface_shm.h"
@@ -27,7 +28,8 @@ static const char simpleVS[] =
         "attribute vec2 texCoords;\n"
         "varying vec2 outTexCoords;\n"
         "\nvoid main(void) {\n"
-        "    outTexCoords = texCoords;\n"
+        "    outTexCoords.x = texCoords.x;\n"
+        "    outTexCoords.y = 1.0 - texCoords.y;\n"
         "    gl_Position = position;\n"
         "}\n\n";
 
@@ -55,7 +57,7 @@ class CompositorGL_EGL
 {
 public:
     ~CompositorGL_EGL();
-    CompositorGL_EGL(NativeDisplayType nativeDisplay);
+    CompositorGL_EGL();
 
     EGLint getVID();
 
@@ -69,9 +71,9 @@ CompositorGL_EGL::~CompositorGL_EGL()
     were_debug("EGL destroyed.\n");
 }
 
-CompositorGL_EGL::CompositorGL_EGL(NativeDisplayType nativeDisplay)
+CompositorGL_EGL::CompositorGL_EGL()
 {
-    display_ = eglGetDisplay(nativeDisplay);
+    display_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
     if (display_ == EGL_NO_DISPLAY)
         throw std::runtime_error("[CompositorGL_EGL::CompositorGL_EGL] Failed: eglGetDisplay.");
 
@@ -86,7 +88,7 @@ CompositorGL_EGL::CompositorGL_EGL(NativeDisplayType nativeDisplay)
     were_message("EGL_EXTENSIONS = %s\n",    eglQueryString(display_, EGL_EXTENSIONS));
 
     const EGLint configAttribs[] = {
-            EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
+            EGL_SURFACE_TYPE, EGL_PBUFFER_BIT,
             EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
             EGL_RED_SIZE, 8,
             EGL_GREEN_SIZE, 8,
@@ -118,7 +120,7 @@ class CompositorGL_GL
 {
 public:
     ~CompositorGL_GL();
-    CompositorGL_GL(CompositorGL_EGL *egl, NativeWindowType window);
+    CompositorGL_GL(CompositorGL_EGL *egl);
 
     static GLuint loadShader(GLenum shaderType, const char *pSource);
 
@@ -136,6 +138,7 @@ public:
     GLuint _textureAlphaHandle;
 #endif
     //GLuint _textureSamplerHandle;
+    GLuint fboId = 0;
 };
 
 CompositorGL_GL::~CompositorGL_GL()
@@ -151,11 +154,16 @@ CompositorGL_GL::~CompositorGL_GL()
     were_debug("GL destroyed.\n");
 }
 
-CompositorGL_GL::CompositorGL_GL(CompositorGL_EGL *egl, NativeWindowType window)
+CompositorGL_GL::CompositorGL_GL(CompositorGL_EGL *egl)
 {
+    const EGLint pbufferAttribs[] = {
+            EGL_WIDTH, 480,
+            EGL_HEIGHT, 800,
+            EGL_NONE};
+
     _egl = egl;
 
-    _surface = eglCreateWindowSurface(_egl->display_, _egl->config_, window, NULL);
+    _surface = eglCreatePbufferSurface(_egl->display_, _egl->config_, pbufferAttribs);
     if (_surface == EGL_NO_SURFACE)
         throw std::runtime_error("[CompositorGL_GL::CompositorGL_GL] Failed: eglCreateWindowSurface.");
 
@@ -174,6 +182,27 @@ CompositorGL_GL::CompositorGL_GL(CompositorGL_EGL *egl, NativeWindowType window)
     were_message("GL_VENDOR = %s\n",     (char *) glGetString(GL_VENDOR));
     were_message("GL_RENDERER = %s\n",   (char *) glGetString(GL_RENDERER));
     were_message("GL_EXTENSIONS = %s\n", (char *) glGetString(GL_EXTENSIONS));
+
+    glGenFramebuffers(1, &fboId);
+    glBindFramebuffer(GL_FRAMEBUFFER, fboId);
+
+    GLuint renderBuffer;
+    glGenRenderbuffers(1, &renderBuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, renderBuffer);
+
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_RGB565, 480, 800);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, renderBuffer);
+
+    GLuint depthRenderbuffer;
+    glGenRenderbuffers(1, &depthRenderbuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, depthRenderbuffer);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, 480, 800);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthRenderbuffer);
+
+    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+        throw std::runtime_error("[CompositorGL_GL::CompositorGL_GL] Failed create FBO.");
+
+
 
     _vertexShader = loadShader(GL_VERTEX_SHADER, simpleVS);
     _pixelShader = loadShader(GL_FRAGMENT_SHADER, simpleFS);
@@ -198,7 +227,7 @@ CompositorGL_GL::CompositorGL_GL(CompositorGL_EGL *egl, NativeWindowType window)
 #endif
     //_textureSamplerHandle = glGetUniformLocation(_textureProgram, "texture");
 
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glBindFramebuffer(GL_FRAMEBUFFER, fboId);
     eglQuerySurface(_egl->display_, _surface, EGL_WIDTH, &_surfaceWidth);
     eglQuerySurface(_egl->display_, _surface, EGL_HEIGHT, &_surfaceHeight);
     glViewport(0, 0, _surfaceWidth, _surfaceHeight);
@@ -405,21 +434,13 @@ public:
     int displayHeight();
 
 private:
-    void initializeForNativeDisplay(NativeDisplayType nativeDisplay);
-    void finishForNativeDisplay();
-    void initializeForNativeWindow(NativeWindowType window);
-    void finishForNativeWindow();
+    unsigned char* screenData = new unsigned char[2 * 480 * 800];
+    void createMemorySegment();
+
+    void initializeForNativeDisplay();
+    void initializeForNativeWindow();
 
     void draw();
-
-    void pointerDown(int slot, int x, int y);
-    void pointerUp(int slot, int x, int y);
-    void pointerMotion(int slot, int x, int y);
-    void keyDown(int code);
-    void keyUp(int code);
-    void buttonPress(int button, int x, int y);
-    void buttonRelease(int button, int x, int y);
-    void cursorMotion(int x, int y);
 
     void connection(std::shared_ptr <SparkleConnection> client);
     void packet(std::shared_ptr<SparkleConnection> client, std::shared_ptr<WereSocketUnixMessage> message);
@@ -432,7 +453,6 @@ private:
     void addSurfaceDamage(const std::string &name, int x1, int y1, int x2, int y2);
 
     std::shared_ptr<CompositorGLSurface> findSurface(const std::string &name);
-    void transformCoordinates(int x, int y, std::shared_ptr<CompositorGLSurface> surface, int *_x, int *_y);
 
     static bool sortFunction(std::shared_ptr<CompositorGLSurface> a1, std::shared_ptr<CompositorGLSurface> a2);
 
@@ -494,26 +514,17 @@ CompositorGL::CompositorGL(WereEventLoop *loop, Platform *platform, const std::s
     _plane[18] = 1.0f;
     _plane[19] = 1.0f;
 
-    _platform->initializeForNativeDisplay.connect(WereSimpleQueuer(loop, &CompositorGL::initializeForNativeDisplay, this));
-    _platform->initializeForNativeWindow.connect(WereSimpleQueuer(loop, &CompositorGL::initializeForNativeWindow, this));
-    _platform->finishForNativeDisplay.connect(WereSimpleQueuer(loop, &CompositorGL::finishForNativeDisplay, this));
-    _platform->finishForNativeWindow.connect(WereSimpleQueuer(loop, &CompositorGL::finishForNativeWindow, this));
-
     _platform->draw.connect(WereSimpleQueuer(loop, &CompositorGL::draw, this));
-
-    _platform->pointerDown.connect(WereSimpleQueuer(loop, &CompositorGL::pointerDown, this));
-    _platform->pointerUp.connect(WereSimpleQueuer(loop, &CompositorGL::pointerUp, this));
-    _platform->pointerMotion.connect(WereSimpleQueuer(loop, &CompositorGL::pointerMotion, this));
-    _platform->keyDown.connect(WereSimpleQueuer(loop, &CompositorGL::keyDown, this));
-    _platform->keyUp.connect(WereSimpleQueuer(loop, &CompositorGL::keyUp, this));
-    _platform->buttonPress.connect(WereSimpleQueuer(loop, &CompositorGL::buttonPress, this));
-    _platform->buttonRelease.connect(WereSimpleQueuer(loop, &CompositorGL::buttonRelease, this));
-    _platform->cursorMotion.connect(WereSimpleQueuer(loop, &CompositorGL::cursorMotion, this));
 
     _server = new SparkleServer(_loop, file);
 
     _server->signal_connected.connect(WereSimpleQueuer(loop, &CompositorGL::connection, this));
     _server->signal_packet.connect(WereSimpleQueuer(loop, &CompositorGL::packet, this));
+
+    initializeForNativeDisplay();
+    initializeForNativeWindow();
+
+    createMemorySegment();
 }
 
 int CompositorGL::displayWidth()
@@ -526,42 +537,29 @@ int CompositorGL::displayHeight()
     return _gl->_surfaceHeight;
 }
 
+void CompositorGL::createMemorySegment(){
+    int shmId_ = shmget_(508480, 2 * 480 * 800, IPC_CREAT | 0666);
+    if (shmId_ == -1)
+        throw WereException("[%p][%s] shmget failed.", this, __PRETTY_FUNCTION__);
+
+    screenData = (unsigned char*) shmat_(shmId_, NULL, 0);
+}
+
 /* ================================================================================================================== */
 
-void CompositorGL::initializeForNativeDisplay(NativeDisplayType nativeDisplay)
+void CompositorGL::initializeForNativeDisplay()
 {
-    _egl = new CompositorGL_EGL(nativeDisplay);
+    _egl = new CompositorGL_EGL();
     _platform->getVID.connect(std::bind(&CompositorGL_EGL::getVID, _egl));
 }
 
-void CompositorGL::finishForNativeDisplay()
+void CompositorGL::initializeForNativeWindow()
 {
-    //XXX Disconnect getVID
-
-    if (_egl != 0)
-        delete _egl;
-    _egl = 0;
-}
-
-void CompositorGL::initializeForNativeWindow(NativeWindowType window)
-{
-    _gl = new CompositorGL_GL(_egl, window);
+    _gl = new CompositorGL_GL(_egl);
 
     _server->broadcast(DisplaySizeNotification({_gl->_surfaceWidth, _gl->_surfaceHeight}));
 
     _redraw = true;
-}
-
-void CompositorGL::finishForNativeWindow()
-{
-    if (_gl != 0)
-    {
-        for (auto it = _surfaces.begin(); it != _surfaces.end(); ++it)
-            (*it)->destroyTexture();
-
-        delete _gl;
-    }
-    _gl = 0;
 }
 
 void CompositorGL::draw()
@@ -572,7 +570,7 @@ void CompositorGL::draw()
 #if 1
     int width;
     int height;
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glBindFramebuffer(GL_FRAMEBUFFER, _gl->fboId);
     eglQuerySurface(_egl->display_, _gl->_surface, EGL_WIDTH, &width);
     eglQuerySurface(_egl->display_, _gl->_surface, EGL_HEIGHT, &height);
 
@@ -599,7 +597,7 @@ void CompositorGL::draw()
         glClearColor(0.15f, 0.35f, 0.55f, 1.0f);
         glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glBindFramebuffer(GL_FRAMEBUFFER, _gl->fboId);
         glUseProgram(_gl->_textureProgram);
 
         for (auto it = _surfaces.begin(); it != _surfaces.end(); ++it)
@@ -668,115 +666,9 @@ void CompositorGL::draw()
 
         eglSwapBuffers(_egl->display_, _gl->_surface);
 
+        glReadPixels(0, 0, displayWidth(), displayHeight(), GL_RGB, GL_UNSIGNED_SHORT_5_6_5, screenData);
+
         frame();
-    }
-}
-
-/* ================================================================================================================== */
-
-void CompositorGL::pointerDown(int slot, int x, int y)
-{
-    for (auto rit = _surfaces.rbegin(); rit != _surfaces.rend(); ++rit)
-    {
-        std::shared_ptr<CompositorGLSurface> surface = (*rit);
-        int _x;
-        int _y;
-        transformCoordinates(x, y, surface, &_x, &_y);
-        if (_x != -1 && _y != -1)
-        {
-            _server->broadcast(PointerDownNotification({surface->name(), slot, _x, _y}));
-            return;
-        }
-    }
-}
-
-void CompositorGL::pointerUp(int slot, int x, int y)
-{
-    for (auto rit = _surfaces.rbegin(); rit != _surfaces.rend(); ++rit)
-    {
-        std::shared_ptr<CompositorGLSurface> surface = (*rit);
-        int _x;
-        int _y;
-        transformCoordinates(x, y, surface, &_x, &_y);
-        if (_x != -1 && _y != -1)
-        {
-            _server->broadcast(PointerUpNotification({surface->name(), slot, _x, _y}));
-            return;
-        }
-    }
-}
-
-void CompositorGL::pointerMotion(int slot, int x, int y)
-{
-    for (auto rit = _surfaces.rbegin(); rit != _surfaces.rend(); ++rit)
-    {
-        std::shared_ptr<CompositorGLSurface> surface = (*rit);
-        int _x;
-        int _y;
-        transformCoordinates(x, y, surface, &_x, &_y);
-        if (_x != -1 && _y != -1)
-        {
-            _server->broadcast(PointerMotionNotification({surface->name(), slot, _x, _y}));
-            return;
-        }
-    }
-}
-
-void CompositorGL::keyDown(int code)
-{
-    _server->broadcast(KeyDownNotification({code}));
-}
-
-void CompositorGL::keyUp(int code)
-{
-    _server->broadcast(KeyUpNotification({code}));
-}
-
-void CompositorGL::buttonPress(int button, int x, int y)
-{
-    for (auto rit = _surfaces.rbegin(); rit != _surfaces.rend(); ++rit)
-    {
-        std::shared_ptr<CompositorGLSurface> surface = (*rit);
-        int _x;
-        int _y;
-        transformCoordinates(x, y, surface, &_x, &_y);
-        if (_x != -1 && _y != -1)
-        {
-            _server->broadcast(ButtonPressNotification({surface->name(), button, _x, _y}));
-            return;
-        }
-    }
-}
-
-void CompositorGL::buttonRelease(int button, int x, int y)
-{
-    for (auto rit = _surfaces.rbegin(); rit != _surfaces.rend(); ++rit)
-    {
-        std::shared_ptr<CompositorGLSurface> surface = (*rit);
-        int _x;
-        int _y;
-        transformCoordinates(x, y, surface, &_x, &_y);
-        if (_x != -1 && _y != -1)
-        {
-            _server->broadcast(ButtonReleaseNotification({surface->name(), button, _x, _y}));
-            return;
-        }
-    }
-}
-
-void CompositorGL::cursorMotion(int x, int y)
-{
-    for (auto rit = _surfaces.rbegin(); rit != _surfaces.rend(); ++rit)
-    {
-        std::shared_ptr<CompositorGLSurface> surface = (*rit);
-        int _x;
-        int _y;
-        transformCoordinates(x, y, surface, &_x, &_y);
-        if (_x != -1 && _y != -1)
-        {
-            _server->broadcast(CursorMotionNotification({surface->name(), _x, _y}));
-            return;
-        }
     }
 }
 
@@ -922,23 +814,6 @@ std::shared_ptr<CompositorGLSurface> CompositorGL::findSurface(const std::string
     were_debug("Surface [%s]: not registered.\n", name.c_str());
 
     return nullptr;
-}
-
-void CompositorGL::transformCoordinates(int x, int y, std::shared_ptr<CompositorGLSurface> surface, int *_x, int *_y)
-{
-    *_x = -1;
-    *_y = -1;
-
-    int x1a = surface->position().from.x;
-    int y1a = surface->position().from.y;
-    int x2a = surface->position().to.x;
-    int y2a = surface->position().to.y;
-
-    if (x < x1a || x > x2a || y < y1a || y > y2a)
-        return;
-
-    *_x = (x - x1a) * surface->texture()->width() / (x2a - x1a);
-    *_y = (y - y1a) * surface->texture()->height() / (y2a - y1a);
 }
 
 bool CompositorGL::sortFunction(std::shared_ptr<CompositorGLSurface> a1, std::shared_ptr<CompositorGLSurface> a2)

@@ -1,0 +1,16 @@
+Detecting C [-std=c11] compiler features failed to compile with the following output:
+Change Dir: C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\android_sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_6d099"
+ninja: error: 'C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/feature_tests.c', needed by 'CMakeFiles/cmTC_6d099.dir/feature_tests.c.o', missing and no known rule to make it
+
+
+
+Detecting CXX [-std=c++14] compiler features failed to compile with the following output:
+Change Dir: C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\android_sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_241c7"
+ninja: error: 'C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/feature_tests.cxx', needed by 'CMakeFiles/cmTC_241c7.dir/feature_tests.cxx.o', missing and no known rule to make it
+
+
+

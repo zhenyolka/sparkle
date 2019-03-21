@@ -1,0 +1,165 @@
+
+{
+	"buildFiles" : [ "C:/AndroidProjects/sparkle/apk/app/src/main/cpp/CMakeLists.txt" ],
+	"cFileExtensions" : [ "c" ],
+	"cleanCommands" : 
+	[
+		"C:\\android_sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\AndroidProjects\\sparkle\\apk\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"libsparkle.so-Debug-x86" : 
+		{
+			"abi" : "x86",
+			"artifactName" : "libsparkle.so",
+			"buildCommand" : "C:\\android_sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\AndroidProjects\\sparkle\\apk\\app\\.externalNativeBuild\\cmake\\debug\\x86 --target libsparkle.so",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/apk/app/src/main/cpp/main.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/were/src/were_event_source.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/were/src/were_call_queue.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/were/src/were_signal_handler.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/were/src/were_event_loop.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/were/src/were_timer.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/were/src/were_socket_unix.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/were/src/were_server_unix.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/were/src/were_stream.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/were/src/were_socket_unix_message_stream.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/platform/na/platform_na.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/compositor/gl/compositor_gl.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/compositor/gl/texture.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/common/sparkle_connection.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/common/sparkle_server.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/common/sparkle_surface_shm.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/common/were_benchmark.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/sound/sles/sound_sles.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/were/src/were_exception.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/common/sparkle_protocol.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot  -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIE      -c ",
+					"src" : "C:/AndroidProjects/sparkle/shm/shm.c",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android19 --gcc-toolchain=C:/android_sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/windows-x86_64 --sysroot=C:/android_sdk/ndk-bundle/sysroot   -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\.. -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include -IC:\\AndroidProjects\\sparkle\\apk\\app\\src\\main\\cpp\\..\\..\\..\\..\\..\\were\\include\\were -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\android\\support\\include -isystem C:\\android_sdk\\ndk-bundle\\sources\\cxx-stl\\llvm-libc++abi\\include  -isystem C:/android_sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -fexceptions -std=gnu++11 -Wall -O0 -fno-limit-debug-info  -fPIE    -c ",
+					"src" : "C:/AndroidProjects/sparkle/common/sparkle_sound_buffer.cpp",
+					"workingDirectory" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86"
+				}
+			],
+			"output" : "C:/AndroidProjects/sparkle/apk/app/.externalNativeBuild/cmake/debug/x86/libsparkle.so",
+			"toolchain" : "1889417949"
+		}
+	},
+	"toolchains" : 
+	{
+		"1889417949" : 
+		{
+			"cCompilerExecutable" : "C:/android_sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
+			"cppCompilerExecutable" : "C:/android_sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+		}
+	}
+}

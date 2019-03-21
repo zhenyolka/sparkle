@@ -1,0 +1,19 @@
+#Internal package file, do not edit.
+#Sat Mar 09 16:14:00 GMT+04:00 2019
+1.base=C\:\\AndroidProjects\\sparkle\\apk\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+2.path=armeabi-v7a/sparkle
+0.baseType=DIRECTORY
+3.baseType=DIRECTORY
+2.base=C\:\\AndroidProjects\\sparkle\\apk\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+3.set=ASSET
+2.set=ASSET
+1.baseType=DIRECTORY
+3.path=x86/sparkle
+count=4
+1.set=ASSET
+0.path=x86_64/sparkle
+3.base=C\:\\AndroidProjects\\sparkle\\apk\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+0.set=ASSET
+0.base=C\:\\AndroidProjects\\sparkle\\apk\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+2.baseType=DIRECTORY
+1.path=arm64-v8a/sparkle

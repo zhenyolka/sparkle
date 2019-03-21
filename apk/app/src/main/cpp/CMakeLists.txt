@@ -5,8 +5,6 @@ set(SPARKLE_ROOT "../../../../../")
 
 # build native_app_glue as a static lib
 set(${CMAKE_C_FLAGS}, "${CMAKE_C_FLAGS}")
-add_library(native_app_glue STATIC
-    ${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c)
 
 # now build app's shared lib
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -Wall")
@@ -14,9 +12,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -Wall")
 # Export ANativeActivity_onCreate(),
 # Refer to: https://github.com/android-ndk/ndk/issues/381.
 set(CMAKE_SHARED_LINKER_FLAGS
-    "${CMAKE_SHARED_LINKER_FLAGS} -u ANativeActivity_onCreate")
+    "${CMAKE_SHARED_LINKER_FLAGS}")
 
-add_library(sparkle SHARED
+add_executable(libsparkle.so
             main.cpp
             ${SPARKLE_ROOT}/were/src/were_event_source.cpp
             ${SPARKLE_ROOT}/were/src/were_call_queue.cpp
@@ -41,17 +39,15 @@ add_library(sparkle SHARED
             ${SPARKLE_ROOT}/common/sparkle_sound_buffer.cpp
 )
 
-target_include_directories(sparkle PRIVATE
-    ${ANDROID_NDK}/sources/android/native_app_glue
+target_include_directories(libsparkle.so PRIVATE
     ${SPARKLE_ROOT}/
     ${SPARKLE_ROOT}/were/include
     ${SPARKLE_ROOT}/were/include/were
 )
 
 # add lib dependencies
-target_link_libraries(sparkle
+target_link_libraries(libsparkle.so
     android
-    native_app_glue
     log
     EGL
     GLESv2

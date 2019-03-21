@@ -14,21 +14,9 @@ public:
 
     WereFunction<int ()> getVID;
     WereSignal<void (NativeDisplayType)> initializeForNativeDisplay;
-    WereSignal<void ()> finishForNativeDisplay;
     WereSignal<void (NativeWindowType)> initializeForNativeWindow;
-    WereSignal<void ()> finishForNativeWindow;
 
     WereSignal<void ()> draw;
-
-    WereSignal<void (int, int, int)> pointerDown;
-    WereSignal<void (int, int, int)> pointerUp;
-    WereSignal<void (int, int, int)> pointerMotion;
-    WereSignal<void (int)> keyDown;
-    WereSignal<void (int)> keyUp;
-
-    WereSignal<void (int, int, int)> buttonPress;
-    WereSignal<void (int, int, int)> buttonRelease;
-    WereSignal<void (int, int)> cursorMotion;
 };
 
 #endif /* PLATFORM_H */

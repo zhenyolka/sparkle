@@ -1,0 +1,4 @@
+#Sat Mar 09 16:14:02 GMT+04:00 2019
+base.0=C\:\\AndroidProjects\\sparkle\\apk\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\7
+path.0=classes.dex
+renamed.0=classes.dex

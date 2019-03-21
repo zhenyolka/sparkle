@@ -92,21 +92,6 @@ void WereEventLoop::exit()
         _thread.join();
 }
 
-void WereEventLoop::processEvents()
-{
-    struct epoll_event events[MAX_EVENTS];
-
-    int n = epoll_wait(_epoll, events, MAX_EVENTS, 0);
-    if (n == -1)
-        throw WereException("[%p][%s] epoll_wait returned -1.", this, __PRETTY_FUNCTION__);
-
-    for (int i = 0; i < n; ++i)
-    {
-        WereEventSource *source = static_cast<WereEventSource *>(events[i].data.ptr);
-        source->event(events[i].events);
-    }
-}
-
 void WereEventLoop::queue(const std::function<void ()> &f)
 {
     _queue->queue(f);
